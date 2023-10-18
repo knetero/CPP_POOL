@@ -2,17 +2,20 @@
 
 int main(int ac , char **av)
 {
+    std::string str;
+
     if (ac < 2)
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     else
     {
         int i = 1;
-        int j = 0;
-        while(av[i])
+        int j;
+        while(i < ac)
         {
+            str = av[i];
             j = 0;
-            while(av[i][j])
-                std::cout << (char) toupper(av[i][j++]);
+            while(str[j])
+                std::cout << (char) toupper(str[j++]);
             i++;
         }
         std::cout << std::endl;

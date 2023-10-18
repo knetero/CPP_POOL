@@ -9,22 +9,14 @@ class PhoneBook{
         int len;
         int index;
     public:
-        PhoneBook(){
-            len = 0;
-        }
+        PhoneBook();
         void add(int i);
         void search(int i);
-        void handle_cin();
-        int check_input(std::string input);
-        void    setlen(){
-            len = 8;
-        }
-        void    setindex(int in){
-            index = in;
-        }
-        int    getindex(){
-            return index;
-        }
+        void setlen();
+        void setindex(int in);
+        int getindex();
 };
+void handle_cin();
+int check_input(std::string input);
 
 #endif

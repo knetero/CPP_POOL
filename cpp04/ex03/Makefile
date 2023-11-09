@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp ICharacter.cpp IMateriaSource.cpp MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = Materials
-HEADERS = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.cpp IMateriaSource.cpp  MateriaSource.cpp
+HEADERS = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp  MateriaSource.hpp
 
 all: $(NAME)
 

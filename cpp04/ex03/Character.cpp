@@ -5,6 +5,7 @@ Character::Character(std::string const& name)
     this->name = name;
     for (int i = 0; i < 4; i++){
         inventory[i] = NULL;
+        Garbage[i] = NULL;
     }
     // std::cout << "Character " << this->getName() << " created" << std::endl;
 }
@@ -47,7 +48,7 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
     if(inventory[idx]){
-        delete inventory[idx];
+        Garbage[idx] = inventory[idx];
         inventory[idx] = NULL;
     }
     // std::cout << "Character " << this->getName() << " can't unequip " << std::endl;
@@ -64,5 +65,6 @@ Character::~Character()
 {
     for (int i = 0; i < 4; i++){
         delete inventory[i];
+        delete Garbage[i];
     }
 }

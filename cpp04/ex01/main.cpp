@@ -10,7 +10,7 @@ int main()
 	Animal* i = new Cat();
 	std::cout << j->Animal::getType() << " " << std::endl;
 	std::cout << i->Animal::getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 	WrongAnimal *wc = new WrongCat();

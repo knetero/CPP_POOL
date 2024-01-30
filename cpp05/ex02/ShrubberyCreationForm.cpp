@@ -14,7 +14,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-    // std::cout << executor.get_grade() << " executes " << this->get_grade_to_execute() << std::endl;
     if (!this->get_is_signed())
         throw AForm::FormNotSignedException();
     else if (executor.get_grade() > this->get_grade_to_execute())
@@ -24,15 +23,34 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
     file.open(filename.c_str());
     if (file.is_open())
     {
-        file << "       _-_" << std::endl;
-        file << "    /~~   ~~\\" << std::endl;
-        file << " /~~         ~~\\" << std::endl;
-        file << "{               }" << std::endl;
-        file << " \\  _-     -_  /" << std::endl;
-        file << "   ~  \\\\ //  ~" << std::endl;
-        file << "_- -   | | _- _" << std::endl;
-        file << "  _ -  | |   -_" << std::endl;
-        file << "      // \\\\" << std::endl;
+        file << "                                                         .\n"
+            "                                              .         ;  \n"
+            "                 .              .              ;%     ;;   \n"
+            "                   ,           ,                :;%  %;   \n"
+            "                    :         ;                   :;%;'     .,   \n"
+            "           ,.        %;     %;            ;        %;'    ,;\n"
+            "             ;       ;%;  %%;        ,     %;    ;%;    ,%'\n"
+            "              %;       %;%;      ,  ;       %;  ;%;   ,%;' \n"
+            "               ;%;      %;        ;%;        % ;%;  ,%;'\n"
+            "                `%;.     ;%;     %;'         `;%%;.%;'\n"
+            "                 `:;%.    ;%%. %@;        %; ;@%;%'\n"
+            "                    `:%;.  :;bd%;          %;@%;'\n"
+            "                      `@%:.  :;%.         ;@@%;'   \n"
+            "                        `@%.  `;@%.      ;@@%;         \n"
+            "                          `@%%. `@%%    ;@@%;        \n"
+            "                            ;@%. :@%%  %@@%;       \n"
+            "                              %@bd%%%bd%%:;     \n"
+            "                                #@%%%%%:;;\n"
+            "                                %@@%%%::;\n"
+            "                                %@@@%(o);  . '         \n"
+            "                                %@@@o%;:(.,'         \n"
+            "                            `.. %@@@o%::;         \n"
+            "                               `)@@@o%::;         \n"
+            "                                %@@(o)::;        \n"
+            "                               .%@@@@%::;         \n"
+            "                               ;%@@@@%::;.          \n"
+            "                              ;%@@@@%%:;;;. \n"
+            "                          ...;%@@@@@%%:;;;;,..";
         file.close();
     }
     else

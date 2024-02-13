@@ -93,8 +93,8 @@ bool parse_key_value(std::string &key, std::string &value)
         std::cerr << "Error: bad input => " << value << std::endl;
         return false;
     }
-    size_t index = value.find(".");
-    if(index != std::string::npos && value.find(".", index + 1) != std::string::npos)
+    int dot = std::count(value.begin(), value.end(), '.');
+    if (dot > 1)
     {
         std::cerr << "Error: bad input => " << key << std::endl;
         return false;
@@ -104,19 +104,34 @@ bool parse_key_value(std::string &key, std::string &value)
 
 bool is_date_valid(int year, int month, int day)
 {
-    std::tm time = {0, 0, 0, day, month - 1, year - 1900,0,0,0,0,0};
-    std::mktime(&time);
-
-    return time.tm_year == year - 1900 &&
-           time.tm_mon == month - 1 &&
-           time.tm_mday == day;
+    if (month == 2)
+    {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+        {
+            if (day > 29)
+                return false;
+        }
+        else
+        {
+            if (day > 28)
+                return false;
+        }
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        if (day > 30)
+            return false;
+    }
+    if(day > 31 || day < 1)
+        return false;
+    return true;
 }
 
 bool parse_date(std::string &date)
 {
-    int year = std::stoi(date.substr(0, 4));
-    int month = std::stoi(date.substr(5, 2));
-    int day = std::stoi(date.substr(8, 2));
+    int year = std::atoi(date.substr(0, 4).c_str());
+    int month = std::atoi(date.substr(5, 2).c_str());
+    int day = std::atoi(date.substr(8, 2).c_str());
     if (year < 2000 || year > 2021)
     {
         std::cerr << "Error: bad input => " << date << std::endl;
@@ -154,9 +169,9 @@ bool is_negative(std::string &value)
 bool is_large(std::string &value)
 {
     double val = std::atof(value.c_str());
-    if (val > 100000)
+    if (val > 1000)
     {
-        std::cerr << "Error: value too large. " << std::endl;
+        std::cerr << "Error: too large a number. " << std::endl;
         return false;
     }
     return true;

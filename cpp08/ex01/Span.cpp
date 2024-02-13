@@ -33,7 +33,7 @@ void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterato
         _container.insert(_container.end(), begin, end);
     else
         throw FullContainerException();
-}
+}   
 
 int Span::shortestSpan(){
     if(_container.size() < 2)
